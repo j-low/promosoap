@@ -46,11 +46,12 @@ func (w *responseWriter) WriteHeader(code int) {
 
 // Server a SOAP server, which can be run standalone or used as a http.HandlerFunc
 type Server struct {
-	Log         func(...interface{}) // do nothing on nil or add your fmt.Print* or log.*
-	handlers    map[string]map[string]map[string]*operationHandler
-	Marshaller  XMLMarshaller
-	ContentType string
-	SoapVersion string
+	Log             func(...interface{}) // do nothing on nil or add your fmt.Print* or log.*
+	handlers        map[string]map[string]map[string]*operationHandler
+	Marshaller      XMLMarshaller
+	ContentType     string
+	SoapVersion     string
+	RequestModifyFn func(r *http.Request) *http.Request
 }
 
 // NewServer construct a new SOAP server
@@ -131,6 +132,9 @@ func addSOAPHeader(w http.ResponseWriter, contentLength int, contentType string)
 }
 
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	if s.RequestModifyFn != nil {
+		r = s.RequestModifyFn(r)
+	}
 	soapAction := r.Header.Get("SOAPAction")
 	s.log("ServeHTTP method:", r.Method, ", path:", r.URL.Path, ", SOAPAction", "\""+soapAction+"\"")
 	// we have a valid request time to call the handler
