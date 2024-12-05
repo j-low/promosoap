@@ -14,7 +14,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/globusdigital/soap"
+	"github.com/j-low/promosoap"
 )
 
 // FooRequest a simple request
@@ -68,7 +68,7 @@ import (
 	"encoding/xml"
 	"log"
 
-	"github.com/globusdigital/soap"
+	"github.com/j-low/promosoap"
 )
 
 // FooRequest a simple request
@@ -93,4 +93,4 @@ func main() {
 }
 ```
 
-#  Apache License Version 2.0
+# Apache License Version 2.0

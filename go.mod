@@ -1,4 +1,4 @@
-module github.com/globusdigital/soap
+module github.com/j-low/promosoap
 
 go 1.19
 
