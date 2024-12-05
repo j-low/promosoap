@@ -92,8 +92,8 @@ func (c *Client) UseSoap12() {
 
 // Call makes a SOAP call
 func (c *Client) Call(ctx context.Context, soapAction string, request, response interface{}) (*http.Response, error) {
-	envelope := Envelope{
-		Body: Body{Content: request},
+	envelope := RequestEnvelope{
+		Body: request,
 	}
 
 	xmlBytes, err := c.Marshaller.Marshal(envelope)

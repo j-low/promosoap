@@ -23,6 +23,10 @@ var (
 
 )
 
+type RequestEnvelope struct {
+	Body interface{} `xml:",omitempty"`
+}
+
 // Envelope type `xml:"http://schemas.xmlsoap.org/soap/envelope/ Envelope"`
 type Envelope struct {
 	XMLName xml.Name `xml:"http://schemas.xmlsoap.org/soap/envelope/ Envelope"`
