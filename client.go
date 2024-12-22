@@ -92,14 +92,9 @@ func (c *Client) UseSoap12() {
 
 // Call makes a SOAP call
 func (c *Client) Call(ctx context.Context, soapAction string, request, response interface{}) (*http.Response, error) {
-  fmt.Println("XXXXXXXXXXXX((((((((((ZZZZZZZZ999999999999999999999999))))))))))")
-  
   envelope := PromoStandardsRequestEnvelope{
     Body: request,
   }
-  // envelope := Envelope{
-  //  Body: Body{Content: request},
-  // }
 
   xmlBytes, err := c.Marshaller.Marshal(envelope)
   if err != nil {
