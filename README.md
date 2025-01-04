@@ -1,8 +1,7 @@
-# SOAP is dead - long live SOAP
+# PromoSOAP
 
-First of all do not write SOAP services if you can avoid it! It is over.
-
-If you can not avoid it this package might help.
+This is an adaptation of [GlobusDigital's SOAP](https://github.com/j-low/promosoap/) package for Go, 
+featuring small updates to integrate with [PromoStandards APIs](https://tools.promostandards.org/).
 
 ## Service
 
